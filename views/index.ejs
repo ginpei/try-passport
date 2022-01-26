@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Try passport</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Try passport</h1>
+      <section>
+        <h2>Current user</h2>
+        <p><%= user ? JSON.stringify(user) : "(No login)" %></p>
+        <form action="/logout" method="post">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button>Log out</button>
+        </form>
+      </section>
+      <section>
+        <h2>Login</h2>
+        <form action="/login" method="post">
+          <p>
+            <label>
+              Username:
+              <input
+                autocomplete="username"
+                autofocus
+                id="username"
+                name="username"
+                required
+                type="text"
+                value="alice"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              Password:
+              <input
+                value="123456"
+                autocomplete="current-password"
+                id="current-password"
+                name="password"
+                required
+                type="password"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              CSRF token:
+              <input type="text" readonly name="_csrf" value="<%= csrfToken %>" />
+            </label>
+          </p>
+          <p>
+            <button>Sign in</button>
+          </p>
+        </form>
+      </section>
+      <section>
+        <h2>Sign up</h2>
+        <form action="/signup" method="post">
+          <p>
+            <label>
+              Username:
+              <input name="username" required type="text" value="alice" />
+            </label>
+          </p>
+          <p>
+            <label>
+              Password:
+              <input
+                value="123456"
+                id="current-password"
+                name="password"
+                required
+                type="text"
+              />
+            </label>
+          </p>
+          <p>
+            <label>
+              CSRF token:
+              <input type="text" readonly name="_csrf" value="<%= csrfToken %>" />
+            </label>
+          </p>
+          <p>
+            <button>Sign up</button>
+          </p>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
